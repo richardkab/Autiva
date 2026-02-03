@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Autiva.Pages.ReportsPage"
+             BackgroundColor="{StaticResource Bg0}"
+             Title="Berichte &amp; PDF">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="18" Spacing="14">
+
+            <Label Text="Protokoll-Archiv" FontSize="18" FontAttributes="Bold" />
+            <Label Text="Wähle ein Fahrzeug und einen Check aus, um ein PDF zu generieren."
+                   FontSize="12" TextColor="{StaticResource Text1}" />
+
+            <Picker x:Name="VehiclePicker" Title="Fahrzeug wählen"
+                    SelectedIndexChanged="OnVehicleChanged" />
+
+            <CollectionView x:Name="ReportsCollection" SelectionMode="Single"
+                            SelectionChanged="OnReportSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="{StaticResource Stroke}" BackgroundColor="{StaticResource Card}"
+                                StrokeShape="RoundRectangle 18" Padding="14" Margin="0,6">
+                            <VerticalStackLayout Spacing="6">
+                                <Label Text="{Binding CreatedAt, StringFormat='Check vom {0:dd.MM.yyyy HH:mm}'}" 
+                                       FontAttributes="Bold" />
+                                <Label Text="{Binding Inspector, StringFormat='Prüfer: {0}'}" FontSize="12" />
+                                <Label Text="{Binding MileageKm, StringFormat='Kilometerstand: {0} km'}" FontSize="12" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="PDF-Bericht erstellen" BackgroundColor="{StaticResource Violet}"
+                    Clicked="OnExportSelectedPdf" />
+
+            <Label x:Name="LastPdfLabel" Text="Noch kein PDF erstellt."
+                   FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource Text1}" />
+
+            <Button Text="Zurück" Clicked="OnBack" Margin="0,10,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

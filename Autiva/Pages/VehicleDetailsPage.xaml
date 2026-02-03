@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Autiva.Pages.VehicleDetailsPage"
+             BackgroundColor="{StaticResource Bg0}"
+             Title="Fahrzeugdetails">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="18" Spacing="14">
+
+            <Label Text="Fahrzeug bearbeiten" FontSize="18" FontAttributes="Bold" />
+            <Label x:Name="HeaderLabel" Text="—" FontSize="12" TextColor="{StaticResource Text1}" />
+
+            <Border Stroke="{StaticResource Stroke}" StrokeThickness="1"
+                    BackgroundColor="{StaticResource Card}" StrokeShape="RoundRectangle 18" Padding="14">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Kennzeichen" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry x:Name="LicensePlateEntry" Placeholder="z.B. NES-AV 123" />
+
+                    <Label Text="Marke / Modell" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry x:Name="MakeModelEntry" Placeholder="z.B. BMW 320d" />
+
+                    <Label Text="VIN (optional)" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry x:Name="VinEntry" Placeholder="Fahrgestellnummer" />
+
+                    <Label Text="Notizen (optional)" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Editor x:Name="NotesEditor" Placeholder="Besonderheiten..." AutoSize="TextChanges" HeightRequest="110" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Text="Zurück" Grid.Column="0" BackgroundColor="{StaticResource Card}" Clicked="OnBack"/>
+                <Button Text="Speichern" Grid.Column="1" BackgroundColor="{StaticResource Blue}" Clicked="OnSave"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Text="Check starten" Grid.Column="0" BackgroundColor="{StaticResource Green}" Clicked="OnStartCheck"/>
+                <Button Text="Löschen" Grid.Column="1" BackgroundColor="{StaticResource Red}" Clicked="OnDelete"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Autiva.Pages.AddCarPage"
+             BackgroundColor="{StaticResource Bg0}"
+             Title="Fahrzeug hinzufügen">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="18" Spacing="14">
+
+            <Label Text="Neues Fahrzeug" FontSize="18" FontAttributes="Bold" />
+            <Label Text="Bitte trage die Fahrzeugdaten ein. Speicherung erfolgt lokal (offline)."
+                   FontSize="12" TextColor="{StaticResource Text1}" />
+
+            <Border Stroke="{StaticResource Stroke}"
+                    StrokeThickness="1"
+                    BackgroundColor="{StaticResource Card}"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14">
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Kennzeichen" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry x:Name="LicensePlateEntry" Placeholder="z.B. NES-AV 123" />
+
+                    <Label Text="Marke / Modell" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry x:Name="MakeModelEntry" Placeholder="z.B. BMW 320d" />
+
+                    <Label Text="VIN (optional)" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry x:Name="VinEntry" Placeholder="Fahrgestellnummer" />
+
+                    <Label Text="Kilometerstand (km)" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry x:Name="MileageEntry" Placeholder="z.B. 152000" Keyboard="Numeric" />
+
+                    <Label Text="Prüfername" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry x:Name="InspectorEntry" Placeholder="z.B. Richard" />
+
+                    <Label Text="Notizen (optional)" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Editor x:Name="NotesEditor" AutoSize="TextChanges" HeightRequest="110"
+                            Placeholder="Besonderheiten zum Fahrzeug..." />
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Text="Abbrechen" Grid.Column="0" Clicked="OnBack" />
+                <Button Text="Speichern" Grid.Column="1" Clicked="OnSave" />
+            </Grid>
+
+            <Label x:Name="StatusLabel" Text="" FontSize="12" HorizontalOptions="Center" 
+                   TextColor="{StaticResource Text1}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

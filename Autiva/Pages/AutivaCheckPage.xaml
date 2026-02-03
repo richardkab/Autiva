@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Autiva.Pages.AutivaCheckPage"
+             BackgroundColor="{StaticResource Bg0}"
+             Title="Check">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="18" RowSpacing="12">
+
+        <Border Grid.Row="0" Stroke="{StaticResource Stroke}" StrokeThickness="1"
+                BackgroundColor="{StaticResource Card}" StrokeShape="RoundRectangle 18" Padding="14">
+            <VerticalStackLayout Spacing="8">
+                <Label x:Name="VehicleInfoLabel" Text="-" FontAttributes="Bold" FontSize="16" />
+
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                    <Label Text="Prüfer" VerticalOptions="Center" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry Grid.Column="1" x:Name="InspectorEntry" Placeholder="Name eingeben" />
+                </Grid>
+
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                    <Label Text="Kilometer" VerticalOptions="Center" FontSize="12" TextColor="{StaticResource Text1}" />
+                    <Entry Grid.Column="1" x:Name="MileageEntry" Placeholder="Aktueller Stand" Keyboard="Numeric" />
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*,*" ColumnSpacing="10">
+            <Button x:Name="TabBtnTires" Text="Reifen" Clicked="OnTabTires" />
+            <Button x:Name="TabBtnOil" Grid.Column="1" Text="Öl" Clicked="OnTabOil" />
+            <Button x:Name="TabBtnDmg" Grid.Column="2" Text="Schäden" Clicked="OnTabDmg" />
+            <Button x:Name="TabBtnFinal" Grid.Column="3" Text="Final" Clicked="OnTabFinal" />
+        </Grid>
+
+        <ScrollView Grid.Row="2">
+            <VerticalStackLayout Spacing="14">
+
+                <Border x:Name="PanelTires" Stroke="{StaticResource Stroke}" BackgroundColor="{StaticResource Card}" StrokeShape="RoundRectangle 18" Padding="14">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Reifenprüfung" FontAttributes="Bold" FontSize="16" />
+
+                        <Border Stroke="{StaticResource Stroke}" Padding="12" BackgroundColor="{StaticResource Bg1}" StrokeShape="RoundRectangle 14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Vorne rechts" FontAttributes="Bold" />
+                                <Entry x:Name="FR_Pressure" Placeholder="Luftdruck (bar)" Keyboard="Numeric" />
+                                <Entry x:Name="FR_Tread" Placeholder="Profil (mm)" Keyboard="Numeric" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Stroke="{StaticResource Stroke}" Padding="12" BackgroundColor="{StaticResource Bg1}" StrokeShape="RoundRectangle 14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Hinten rechts" FontAttributes="Bold" />
+                                <Entry x:Name="RR_Pressure" Placeholder="Luftdruck (bar)" Keyboard="Numeric" />
+                                <Entry x:Name="RR_Tread" Placeholder="Profil (mm)" Keyboard="Numeric" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Stroke="{StaticResource Stroke}" Padding="12" BackgroundColor="{StaticResource Bg1}" StrokeShape="RoundRectangle 14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Hinten links" FontAttributes="Bold" />
+                                <Entry x:Name="RL_Pressure" Placeholder="Luftdruck (bar)" Keyboard="Numeric" />
+                                <Entry x:Name="RL_Tread" Placeholder="Profil (mm)" Keyboard="Numeric" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Border Stroke="{StaticResource Stroke}" Padding="12" BackgroundColor="{StaticResource Bg1}" StrokeShape="RoundRectangle 14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Vorne links" FontAttributes="Bold" />
+                                <Entry x:Name="FL_Pressure" Placeholder="Luftdruck (bar)" Keyboard="Numeric" />
+                                <Entry x:Name="FL_Tread" Placeholder="Profil (mm)" Keyboard="Numeric" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border x:Name="PanelOil" IsVisible="False" Stroke="{StaticResource Stroke}" BackgroundColor="{StaticResource Card}" StrokeShape="RoundRectangle 18" Padding="14">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Öl-Zustand" FontAttributes="Bold" FontSize="16" />
+                        <RadioButton x:Name="OilOk" Content="OK" IsChecked="True" />
+                        <RadioButton x:Name="OilToCheck" Content="Zu prüfen" />
+                        <RadioButton x:Name="OilUrgent" Content="Dringend" />
+
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="OilLeak" />
+                            <Label Text="Ölfleck unter dem Auto" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="OilUnknown" />
+                            <Label Text="Nicht geprüft" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border x:Name="PanelDmg" IsVisible="False" Stroke="{StaticResource Stroke}" BackgroundColor="{StaticResource Card}" StrokeShape="RoundRectangle 18" Padding="14">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Aktive Warnleuchten" FontAttributes="Bold" FontSize="16" />
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="WarnEngine" />
+                            <Label Text="Motorleuchte" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="WarnAbsEsp" />
+                            <Label Text="ABS/ESP" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="WarnTirePressure" />
+                            <Label Text="Reifendruck" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="WarnBattery" />
+                            <Label Text="Batterie" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <CheckBox x:Name="WarnOil" />
+                            <Label Text="Ölleuchte" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <Label Text="Optik &amp; Innenraum" FontAttributes="Bold" Margin="0,10,0,0" />
+                        <Editor x:Name="OpticEditor" Placeholder="Schäden hier dokumentieren..." AutoSize="TextChanges" HeightRequest="120" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border x:Name="PanelFinal" IsVisible="False" Stroke="{StaticResource Stroke}" BackgroundColor="{StaticResource Card}" StrokeShape="RoundRectangle 18" Padding="14">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Check abschließen" FontAttributes="Bold" FontSize="16" />
+                        <Editor x:Name="NotesEditor" Placeholder="Zusätzliche Notizen zum Check..." AutoSize="TextChanges" HeightRequest="120" />
+                        <Button Text="Protokoll speichern" BackgroundColor="{StaticResource Blue}" Clicked="OnSaveCheck" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
