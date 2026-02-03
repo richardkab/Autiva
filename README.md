@@ -22,15 +22,3 @@ Eine kompakte App für **Android** und **Windows**, die den klassischen "Zettelk
 | **Datenbank** | SQLite |
 | **PDF-Erzeugung** | Syncfusion (Net.Maui) |
 
----
-
-### 📸 Screenshots
-*Hier kannst du Bilder deiner App per Drag & Drop in den GitHub-Editor ziehen, um sie hier anzuzeigen.*
-
----
-
-### 🚀 Installation & Nutzung
-1. Projekt klonen.
-2. In Visual Studio 2026 öffnen.
-3. Eigenen Syncfusion-Key in der Konfiguration hinterlegen.
-4. Auf Android oder Windows starten.
